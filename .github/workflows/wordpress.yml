@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-18.04 ]  # OS. ubuntu-18.04 is also available.
-        php: [ '7.0', '7.2', '7.4' ] # PHP versions to check.
-        wp: [ 'latest', '5.4' ]      # WordPress version to check.
+        php: [ '7.2', '7.4', '8.1' ] # PHP versions to check.
+        wp: [ 'latest', '5.7' ]      # WordPress version to check.
     services:
       mysql:
         image: mysql:5.7
@@ -40,7 +40,7 @@ jobs:
         run: composer validate
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress
 
       - name: Start MySQL
         run: sudo systemctl start mysql

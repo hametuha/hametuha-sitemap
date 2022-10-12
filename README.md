@@ -3,7 +3,7 @@
 Contributors: Takahashi_Fumiki,hametuha  
 Tags: sitemap,google,news  
 Requires at least: 5.7  
-Requires PHP: 7.0  
+Requires PHP: 7.2  
 Tested up to: 6.0  
 Stable Tag: nightly
 
