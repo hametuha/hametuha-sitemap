@@ -75,5 +75,10 @@ abstract class SitemapProvider extends AbstractSitemapProvider {
 		if ( ! empty( $url['lastmod'] ) ) {
 			printf( '<lastmod>%s</lastmod>%s', esc_xml( $url['lastmod'] ), "\n" );
 		}
+		if ( ! empty( $url['images'] ) ) {
+			foreach ( $url['images'] as $src ) {
+				printf( '<image:image><image:loc>%s</image:loc></image:image>%s', $src, "\n" );
+			}
+		}
 	}
 }

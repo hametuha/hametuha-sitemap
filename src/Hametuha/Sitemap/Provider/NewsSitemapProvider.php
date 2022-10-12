@@ -6,9 +6,12 @@ namespace Hametuha\Sitemap\Provider;
 use Hametuha\Sitemap\Pattern\SitemapProvider;
 use Hametuha\Sitemap\Utility\QueryArgsHelper;
 
+/**
+ * News sitemap.
+ *
+ * @package hsm
+ */
 class NewsSitemapProvider extends SitemapProvider {
-
-	use QueryArgsHelper;
 
 	protected $type = 'news';
 

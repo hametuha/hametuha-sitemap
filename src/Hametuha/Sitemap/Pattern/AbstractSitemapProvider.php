@@ -4,6 +4,7 @@ namespace Hametuha\Sitemap\Pattern;
 
 
 use Hametuha\Sitemap\Utility\OptionAccessor;
+use Hametuha\Sitemap\Utility\QueryArgsHelper;
 
 /**
  * Get sitemap index.
@@ -12,7 +13,9 @@ use Hametuha\Sitemap\Utility\OptionAccessor;
  */
 abstract class AbstractSitemapProvider extends Singleton {
 
-	use OptionAccessor;
+	use OptionAccessor,
+		QueryArgsHelper;
+
 
 	/**
 	 * Render header

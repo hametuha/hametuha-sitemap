@@ -26,9 +26,15 @@ function hsm_init() {
 	// Root Controllers.
 	\Hametuha\Sitemap\Setting::get_instance();
 	\Hametuha\Sitemap\Registry::get_instance();
+	// Posts sitemap.
+	\Hametuha\Sitemap\Provider\PostSitemapIndexProvider::get_instance();
+	\Hametuha\Sitemap\Provider\PostSitemapProvider::get_instance();
 	// News sitemaps.
 	\Hametuha\Sitemap\Provider\NewsSitemapIndexProvider::get_instance();
 	\Hametuha\Sitemap\Provider\NewsSitemapProvider::get_instance();
+	// Attachment sitemap.
+	\Hametuha\Sitemap\Provider\AttachmentSitemapIndexProvider::get_instance();
+	\Hametuha\Sitemap\Provider\AttachmentSitemapProvider::get_instance();
 	// Sitemap style
 	\Hametuha\Sitemap\Styles\SitemapIndexStyle::get_instance();
 	\Hametuha\Sitemap\Styles\SitemapStyle::get_instance();

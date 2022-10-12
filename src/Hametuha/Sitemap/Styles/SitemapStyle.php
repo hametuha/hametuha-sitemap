@@ -27,6 +27,7 @@ class SitemapStyle extends SitemapStylePattern {
 			version="1.0"
 			xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 			xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+			xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 			exclude-result-prefixes="sitemap"
 		>
 
@@ -52,6 +53,9 @@ class SitemapStyle extends SitemapStylePattern {
 							<li class="sitemap-item">
 								<a class="sitemap-link" href="{sitemap:loc}"><xsl:value-of select="sitemap:loc" /></a><br />
 								<span class="sitemap-lastmod"><xsl:value-of select="sitemap:lastmod" /></span>
+								<xsl:for-each select="image:image">
+									<img src="{image:loc}" alt="" class="sitemap-image" />
+								</xsl:for-each>
 							</li>
 						</xsl:for-each>
 					</ol>

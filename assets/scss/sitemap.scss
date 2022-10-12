@@ -40,6 +40,15 @@ body {
 		padding: 20px 0;
 		border-bottom: 1px solid #eee;
 		list-style-position: inside;
+		word-break: break-all;
+		word-wrap: break-word;
+
+		&::after {
+			content: "";
+			display: block;
+			clear: both;
+			height: 0;
+		}
 
 		&:last-child {
 			border-bottom: none;
@@ -47,6 +56,8 @@ body {
 	}
 
 	&-lastmod {
+		display: block;
+		margin: 10px 0;
 		font-size: 0.8em;
 		font-family: monospace;
 		color: #666;
@@ -65,5 +76,14 @@ body {
 	a:active {
 		text-decoration: none;
 		color: #70a3d5;
+	}
+
+	&-image {
+		width: auto;
+		height: auto;
+		margin: 0 10px 10px 0;
+		max-width: 120px;
+		display: block;
+		float: left;
 	}
 }

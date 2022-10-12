@@ -11,7 +11,6 @@ use Hametuha\Sitemap\Utility\QueryArgsHelper;
  */
 class NewsSitemapIndexProvider extends SitemapIndexProvider {
 
-	use QueryArgsHelper;
 
 	/**
 	 * {@inheritdoc}

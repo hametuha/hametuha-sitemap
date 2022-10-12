@@ -10,7 +10,7 @@ use Hametuha\Sitemap\Pattern\Singleton;
  *
  * @package hsm
  * @property-read bool     $disable_core
- * @property-read int      $post_per_page
+ * @property-read int      $posts_per_page
  * @property-read string[] $post_types
  * @property-read string[] $news_post_types
  * @property-read string[] $taxonomies
@@ -210,7 +210,7 @@ class Setting extends Singleton {
 			case 'disable_core':
 				return (bool) get_option( 'hsm_' . $name );
 			case 'posts_per_page':
-				return min( 5000, (int) get_option( 'bsm_' . $name, 1000 ) ) ?: 1000;
+				return min( 5000, (int) get_option( 'hsm_' . $name, 1000 ) ) ?: 1000;
 			case 'attachment_sitemap':
 				return get_option( 'hsm_' . $name );
 			default:

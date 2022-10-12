@@ -23,7 +23,7 @@ trait QueryArgsHelper {
 			'post_type'           => $this->option()->news_post_types,
 			'orderby'             => [ 'date' => 'DESC' ],
 			'posts_per_page'      => $this->default_news_per_page(),
-			"ignore_sticky_posts" => true,
+			'ignore_sticky_posts' => true,
 			'date_query'          => [
 				[
 					'after'     => '48 hours ago',
@@ -80,5 +80,39 @@ trait QueryArgsHelper {
 			}
 		}
 		return $default_locale;
+	}
+
+	/**
+	 * Get paginated post types.
+	 *
+	 * @return array
+	 */
+	public function post_type_indices() {
+		global $wpdb;
+		$post_types = $this->option()->post_types;
+		if ( empty( $post_types ) ) {
+			return [];
+		}
+		$in_clause = implode( ', ', array_map( function( $post_type ) use ( $wpdb ) {
+			return $wpdb->prepare( '%s', $post_type );
+		}, $post_types ) );
+		$query = <<<SQL
+			SELECT
+			    EXTRACT( YEAR_MONTH from post_date ) as date,
+			    COUNT(ID) AS total
+			FROM {$wpdb->posts}
+			WHERE post_type IN ( {$in_clause} )
+			  AND post_status = 'publish'
+			GROUP BY EXTRACT( YEAR_MONTH from post_date )
+SQL;
+		$result = $wpdb->get_results( $query );
+		$links = [];
+		foreach ( $result as $row ) {
+			$total_page = ceil( $row->total / $this->option()->posts_per_page );
+			for ( $i = 1; $i <= $total_page; $i++ ) {
+				$links[] = home_url( sprintf( 'sitemap_post_%06d_%d.xml', $row->date, $i ) );
+			}
+		}
+		return $links;
 	}
 }
