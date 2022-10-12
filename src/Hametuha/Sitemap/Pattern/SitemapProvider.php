@@ -32,7 +32,8 @@ abstract class SitemapProvider extends AbstractSitemapProvider {
 	 */
 	public function render() {
 		$urls = $this->get_urls();
-		$this->header();;
+		$this->header();
+
 		do_action( 'hsm_pre_sitemao', $this->type, $this->target_name() );
 		echo '<?xml version="1.0" encoding="UTF-8" ?>' . "\n";
 		$url = $this->get_xslt_url();

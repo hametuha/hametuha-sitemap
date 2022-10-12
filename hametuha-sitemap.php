@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Hametuha Sitemap
- * Plugin URI:     	https://wordpress.org/extend/plugins/hamelp
+ * Plugin URI:      https://wordpress.org/extend/plugins/hamelp
  * Description:     Yet another sitemap plugin with more than 200,000 posts.
  * Version:         nightly
  * Author:          Hametuha INC
@@ -35,6 +35,9 @@ function hsm_init() {
 	// Attachment sitemap.
 	\Hametuha\Sitemap\Provider\AttachmentSitemapIndexProvider::get_instance();
 	\Hametuha\Sitemap\Provider\AttachmentSitemapProvider::get_instance();
+	// Taxonomy sitemap.
+	\Hametuha\Sitemap\Provider\TaxonomySitemapIndexProvider::get_instance();
+	\Hametuha\Sitemap\Provider\TaxonomySitemapProvider::get_instance();
 	// Sitemap style
 	\Hametuha\Sitemap\Styles\SitemapIndexStyle::get_instance();
 	\Hametuha\Sitemap\Styles\SitemapStyle::get_instance();

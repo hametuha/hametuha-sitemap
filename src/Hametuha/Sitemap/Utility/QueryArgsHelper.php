@@ -96,7 +96,7 @@ trait QueryArgsHelper {
 		$in_clause = implode( ', ', array_map( function( $post_type ) use ( $wpdb ) {
 			return $wpdb->prepare( '%s', $post_type );
 		}, $post_types ) );
-		$query = <<<SQL
+		$query     = <<<SQL
 			SELECT
 			    EXTRACT( YEAR_MONTH from post_date ) as date,
 			    COUNT(ID) AS total
@@ -105,8 +105,10 @@ trait QueryArgsHelper {
 			  AND post_status = 'publish'
 			GROUP BY EXTRACT( YEAR_MONTH from post_date )
 SQL;
+		// Already escaped.
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$result = $wpdb->get_results( $query );
-		$links = [];
+		$links  = [];
 		foreach ( $result as $row ) {
 			$total_page = ceil( $row->total / $this->option()->posts_per_page );
 			for ( $i = 1; $i <= $total_page; $i++ ) {

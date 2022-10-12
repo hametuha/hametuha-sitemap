@@ -17,6 +17,42 @@ abstract class SitemapIndexProvider extends AbstractSitemapProvider {
 	protected $type = 'index';
 
 	/**
+	 * {@inheritdoc}
+	 */
+	protected function init() {
+		parent::init();
+		if ( $this->is_active() ) {
+			add_filter( 'robots_txt', [ $this, 'robots_txt' ], 10, 2 );
+			add_filter( 'hsm_sitemap_urls', [ $this, 'sitemap_urls' ] );
+		}
+	}
+
+	/**
+	 * Get sitemap URLs.
+	 *
+	 * @param string[] $urls URL list of sitemap index.
+	 * @return string[]
+	 */
+	public function sitemap_urls( $urls ) {
+		$urls[] = $this->build_url();
+		return $urls;
+	}
+
+	/**
+	 * Add robots.txt.
+	 *
+	 * @param string $txt    Robots.txt content.
+	 * @param bool   $public If this site is public.
+	 * @return string
+	 */
+	public function robots_txt( $txt, $public ) {
+		if ( $public ) {
+			$txt .= sprintf( 'Sitemap: %s%s', esc_url( $this->build_url() ), "\n" );
+		}
+		return $txt;
+	}
+
+	/**
 	 * Get sitemap URL.
 	 *
 	 * @return string
@@ -54,9 +90,9 @@ abstract class SitemapIndexProvider extends AbstractSitemapProvider {
 		foreach ( $urls as $url ) {
 			?>
 			<sitemap>
-    			<loc><?php echo esc_url( $url ); ?></loc>
+				<loc><?php echo esc_url( $url ); ?></loc>
 				<?php do_action( 'hsm_sitemap_item', $this->type, $this->target_name() ); ?>
-  			</sitemap>
+			</sitemap>
 			<?php
 		}
 		do_action( 'hsm_after_sitemap', $this->type, $this->target_name() );

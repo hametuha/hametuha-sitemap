@@ -57,10 +57,10 @@ class NewsSitemapProvider extends SitemapProvider {
 		$query = new \WP_Query( $this->news_query_args( 'map', [
 			'no_found_rows' => true,
 		] ) );
-		$urls = [];
+		$urls  = [];
 		foreach ( $query->posts as $post ) {
 			$urls[] = [
-				'link' => get_permalink( $post ),
+				'link'    => get_permalink( $post ),
 				'lastmod' => $this->get_last_mod( $post->post_modified ),
 				'title'   => get_the_title( $post ),
 				'date'    => get_the_time( 'Y-m-d', $post ),

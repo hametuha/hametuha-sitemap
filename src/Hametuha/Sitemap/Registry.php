@@ -37,7 +37,7 @@ class Registry extends Singleton {
 	}
 
 	/**
-	 * Get sitemap incides.
+	 * Get sitemap indices.
 	 *
 	 * @return string[]
 	 */
@@ -67,6 +67,7 @@ class Registry extends Singleton {
 			'^sitemap_index_([^/]+)\.xml$'                => 'index.php?sitemap_type=index&sitemap_target=$matches[1]',
 			'^sitemap_([^/]+)_(\d{4})(\d{2})_(\d+)\.xml$' => 'index.php?sitemap_type=map&sitemap_target=$matches[1]&year=$matches[2]&monthnum=$matches[3]&paged=$matches[4]',
 			'^sitemap_news_(\d+)\.xml$'                   => 'index.php?sitemap_type=news&sitemap_target=news&paged=$matches[1]',
+			'^sitemap_taxonomy_(\d+)\.xml$'               => 'index.php?sitemap_type=map&sitemap_target=taxonomy&paged=$matches[1]',
 			'^sitemap_style_([^/]+)\.xsl$'                => 'index.php?sitemap_type=sitemap_style&sitemap_target=$matches[1]',
 		], $rules );
 	}

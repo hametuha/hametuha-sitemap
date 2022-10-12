@@ -33,9 +33,9 @@ class NewsSitemapIndexProvider extends SitemapIndexProvider {
 	 * @return string[]
 	 */
 	protected function get_urls() {
-		$query = new \WP_Query( $this->news_query_args( 'index', [
-			'posts_per_page'      => 1,
-			'fields'              => 'ids',
+		$query    = new \WP_Query( $this->news_query_args( 'index', [
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
 		] ) );
 		$total    = $query->found_posts;
 		$per_page = $this->default_news_per_page();

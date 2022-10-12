@@ -71,16 +71,16 @@ class Setting extends Singleton {
 		// Register setting.
 		foreach ( [
 			[
-				'id' => 'disable_core',
+				'id'    => 'disable_core',
 				'title' => __( 'Core Sitemap', 'hsm' ),
 				'type'  => 'bool',
 				'label' => __( 'Disable core sitemap', 'hsm' ),
 			],
 			[
-				'id' => 'post_types',
-				'title' => __( 'Post types in Sitemap', 'hsm' ),
-				'type'  => 'checkbox',
-				'label' => __( 'Please check post type to be included in site map.', 'hsm' ),
+				'id'      => 'post_types',
+				'title'   => __( 'Post types in Sitemap', 'hsm' ),
+				'type'    => 'checkbox',
+				'label'   => __( 'Please check post type to be included in site map.', 'hsm' ),
 				'options' => array_map( function( $post_type ) {
 					return [
 						'value' => $post_type->name,
@@ -96,35 +96,35 @@ class Setting extends Singleton {
 				'placeholder' => '1000',
 			],
 			[
-				'id' => 'attachment_sitemap',
-				'title' => __( 'Attachment', 'hsm' ),
-				'type'  => 'radio',
-				'label' => __( 'How attachments appear in sitemap.', 'hsm' ),
+				'id'      => 'attachment_sitemap',
+				'title'   => __( 'Attachment', 'hsm' ),
+				'type'    => 'radio',
+				'label'   => __( 'How attachments appear in sitemap.', 'hsm' ),
 				'options' => [
 					[
 						'value' => '',
-						'label' => __( 'Not displayed.', 'hsm' )
+						'label' => __( 'Not displayed.', 'hsm' ),
 					],
 					[
 						'value' => 'post',
-						'label' => __( 'In post sitemap', 'hsm' )
+						'label' => __( 'In post sitemap', 'hsm' ),
 					],
 					[
 						'value' => 'attachment',
-						'label' => __( 'Create attachment page sitemap', 'hsm' )
+						'label' => __( 'Create attachment page sitemap', 'hsm' ),
 					],
 				],
 			],
 			[
-				'id'    => 'news_post_types',
-				'title' => __( 'Post types in news sitemap', 'hsm' ),
-				'type'  => 'checkbox',
-				'label' => __( 'Please check post type to be included in news site map.', 'hsm' ),
+				'id'      => 'news_post_types',
+				'title'   => __( 'Post types in news sitemap', 'hsm' ),
+				'type'    => 'checkbox',
+				'label'   => __( 'Please check post type to be included in news site map.', 'hsm' ),
 				'options' => array_map( function( $post_type ) {
-					  return [
-						  'value' => $post_type->name,
-						  'label' => $post_type->label,
-					  ];
+					return [
+						'value' => $post_type->name,
+						'label' => $post_type->label,
+					];
 				}, get_post_types( [ 'public' => true ], OBJECT ) ),
 			],
 			[

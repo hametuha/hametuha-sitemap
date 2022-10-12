@@ -40,7 +40,9 @@ class AttachmentSitemapIndexProvider extends SitemapIndexProvider {
 			  AND p2.post_status = 'publish'
 			GROUP BY EXTRACT( YEAR_MONTH from p1.post_date )
 SQL;
-		$urls = [];
+		$urls  = [];
+		// Already escaped.
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		foreach ( $wpdb->get_results( $query ) as $row ) {
 			$pages = ceil( $row->total / $this->option()->posts_per_page );
 			for ( $i = 1; $i <= $pages; $i++ ) {
