@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:     Hametuha Sitemap
- * Plugin URI:      https://wordpress.org/extend/plugins/hamelp
- * Description:     Yet another sitemap plugin with more than 200,000 posts.
- * Version:         nightly
- * Author:          Hametuha INC
- * Author URI:      https://hametuah.co.jp
- * Text Domain:     hsm
- * Domain Path:     /languages
- * License:         GPL3 or Later
- * @package         hsm
+ * Plugin Name:Hametuha Sitemap
+ * Plugin URI: https://wordpress.org/extend/plugins/hamelp
+ * Description: Yet another sitemap plugin with more than 200,000 posts.
+ * Version: nightly
+ * Author: Hametuha INC
+ * Author URI: https://hametuah.co.jp
+ * Text Domain: hsm
+ * Domain Path: /languages
+ * License: GPL3 or Later
+ * @package hsm
  */
 
 // Do not load directory.

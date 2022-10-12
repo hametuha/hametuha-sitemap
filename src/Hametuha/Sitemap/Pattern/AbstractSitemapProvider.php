@@ -13,9 +13,7 @@ use Hametuha\Sitemap\Utility\QueryArgsHelper;
  */
 abstract class AbstractSitemapProvider extends Singleton {
 
-	use OptionAccessor,
-		QueryArgsHelper;
-
+	use QueryArgsHelper;
 
 	/**
 	 * Render header
