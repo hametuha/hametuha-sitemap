@@ -89,4 +89,13 @@ class Registry extends Singleton {
 		}
 		do_action( 'hsm_do_sitemap_' . $sitemap, $wp_query->get( 'sitemap_target' ) );
 	}
+
+	/**
+	 * Get registered sitemap URLs.
+	 *
+	 * @return string[]
+	 */
+	public static function get_registered_sitemap_urls() {
+		return apply_filters( 'hsm_sitemap_urls', [] );
+	}
 }

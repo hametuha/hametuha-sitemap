@@ -51,6 +51,29 @@ class Setting extends Singleton {
 				submit_button();
 				?>
 			</form>
+			<hr style="margin: 40px 0;" />
+			<h2><?php esc_html_e( 'Sitemap URL', 'hsm' ); ?></h2>
+			<p>
+				<?php esc_html_e( 'The sitemap URL are listed below. You should register these URLs at Google Search Console and they also appear in robots.txt.', 'hsm' ); ?>
+			</p>
+			<?php
+			$urls = Registry::get_registered_sitemap_urls();
+			if ( empty( $urls ) ) {
+				printf(
+					'<div style="color: red;">%s</div>',
+					esc_html__( 'No sitemaps are available.', 'hsm' )
+				);
+			} else {
+				foreach ( $urls as $url ) {
+					?>
+					<div style="margin: 10px 0;">
+						<input type="url" style="width: 100%; box-sizing: border-box" readonly
+							value="<?php echo esc_url( $url ); ?>"  onFocus="this.select()" />
+					</div>
+					<?php
+				}
+			}
+			?>
 		</div>
 		<?php
 	}
